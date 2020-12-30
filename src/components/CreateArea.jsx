@@ -33,19 +33,20 @@ function CreateArea(props) {
 	return (
 		<div>
 			<form className="create-note">
-				<input
-					style={{ display: !visibility && "none" }}
-					onChange={handleChange}
-					name="title"
-					placeholder="Title"
-					value={inputNote.title}
-				/>
+				{visibility && (
+					<input
+						onChange={handleChange}
+						name="title"
+						placeholder="Title"
+						value={inputNote.title}
+					/>
+				)}
 				<textarea
 					onClick={handleTextClick}
 					onChange={handleChange}
 					name="content"
 					placeholder="Take a note..."
-					rows="3"
+					rows={!visibility ? "1" : "3"}
 					value={inputNote.content}
 				/>
 				<Zoom in={visibility}>
